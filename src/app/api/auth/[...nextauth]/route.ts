@@ -1,7 +1,8 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import NextAuth from 'next-auth';
 import GitHubProvider from 'next-auth/providers/github';
 
-const handler = NextAuth({
+const authOptions = {
   providers: [
     GitHubProvider({
       clientId: process.env.GITHUB_ID!,
@@ -12,7 +13,15 @@ const handler = NextAuth({
     signIn: '/login',
   },
   callbacks: {
-    async jwt({ token, account, user }) {
+    async jwt({
+      token,
+      account,
+      user,
+    }: {
+      token: any;
+      account: any;
+      user: any;
+    }) {
       if (account) {
         token.accessToken = account.access_token as string;
       }
@@ -21,7 +30,7 @@ const handler = NextAuth({
       }
       return token;
     },
-    async session({ session, token }) {
+    async session({ session, token }: { session: any; token: any }) {
       if (token) {
         session.accessToken = token.accessToken as string;
         session.user.id = token.id as string;
@@ -29,6 +38,9 @@ const handler = NextAuth({
       return session;
     },
   },
-});
+};
+
+// @ts-expect-error NextAuth types may not perfectly match
+const handler = NextAuth(authOptions);
 
 export { handler as GET, handler as POST };

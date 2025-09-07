@@ -15,7 +15,7 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import DescriptionIcon from '@mui/icons-material/Description';
 
 export default function LoginPage() {
-  const { data: session, status } = useSession();
+  const { status } = useSession();
   const router = useRouter();
 
   useEffect(() => {
@@ -59,8 +59,12 @@ export default function LoginPage() {
                 Auto MD && Jira SP
               </Typography>
             </Box>
-            
-            <Typography variant="body1" color="text.secondary" textAlign="center">
+
+            <Typography
+              variant="body1"
+              color="text.secondary"
+              textAlign="center"
+            >
               帮您自动生成 MD文件 以及 工时统计
             </Typography>
 
@@ -80,7 +84,6 @@ export default function LoginPage() {
             >
               使用 GitHub 登录
             </Button>
-
           </Stack>
         </Paper>
       </Box>
