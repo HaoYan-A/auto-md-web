@@ -77,14 +77,6 @@ export default function LoginPage() {
               使用 GitHub 登录
             </Button>
 
-            <Typography
-              variant="body2"
-              color="text.secondary"
-              textAlign="center"
-              sx={{ mt: 2 }}
-            >
-              登录即表示您同意我们的服务条款和隐私政策
-            </Typography>
           </Stack>
         </Paper>
       </Box>
