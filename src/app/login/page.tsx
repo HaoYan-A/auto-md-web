@@ -59,6 +59,10 @@ export default function LoginPage() {
                 Auto MD && Jira SP
               </Typography>
             </Box>
+            
+            <Typography variant="body1" color="text.secondary" textAlign="center">
+              帮您自动生成 MD文件 以及 工时统计
+            </Typography>
 
             <Button
               variant="contained"
